@@ -1,0 +1,36 @@
+<!-- When the *list of type: "Array of objs" and *ngModel is "obj" -->
+<mat-form-field>
+  <mat-select 
+    multiple
+    placeholder="Toppings" 
+    [(ngModel)]="selectedObjects"
+    [compareWith]="comparer"
+    >
+    <mat-option 
+      *ngFor="let el of toppingList$ | async" 
+      [value]="el">
+       {{el.label}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<p>{{selectedObjects | json}}</p>
+
+<br>
+
+<!-- When the *list of type: "Array of objs" and *ngModel is "array" -->
+<mat-form-field>
+  <mat-select 
+    multiple
+    placeholder="Test" 
+    [(ngModel)]="selectedObjectsFromArray"
+    >
+    <mat-option 
+      *ngFor="let el of toppingList" 
+      [value]="el.value">
+        {{el.label}}
+    </mat-option>
+
+  </mat-select>
+</mat-form-field>
+
+<p>{{selectedObjectsFromArray}}</p>
